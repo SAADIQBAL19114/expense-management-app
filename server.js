@@ -11,9 +11,9 @@ dotenv.config();
 // database call
 connectDb();
 
-
-// // rest object
-// const app = express();
+// comment
+// rest object
+const app = express();
 
 // middleware
 app.use(morgan("dev"));
