@@ -5,17 +5,18 @@ import { Button, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 
-const Register = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   // form submit
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      await axios.post("/users/register", values);
-      message.success("Registration Successfull");
+      const { data } = await axios.post("/users/login", values);
+      message.success("Login success ");
       setLoading(false);
-      navigate("/login");
+      localStorage.setItem("user", JSON.stringify({...data.user , password : ""}));
+      navigate("/");
     } catch (error) {
       setLoading(false);
       message.error("something went wrong");
@@ -26,21 +27,17 @@ const Register = () => {
       <div className="register-page">
         {loading && <Spinner />}
         <Form layout="vertical" onFinish={submitHandler}>
-          <h1>Register Form</h1>
-          <Form.Item label="Name" name="name">
-            <Input />
-          </Form.Item>
+          <h1>Login Form</h1>
           <Form.Item label="Email" name="email">
             <Input type="email" />
           </Form.Item>
-
           <Form.Item label="Password" name="password">
             <Input type="password" />
           </Form.Item>
           <div className="d-flex justify-content-between">
-            <Link to="/login ">Already Register? Click Here to login</Link>
+            <Link to="/register ">Not a user? Click Here to Register</Link>
             <Button type="primary" htmlType="submit">
-              Register
+              Login
             </Button>
           </div>
         </Form>
@@ -49,4 +46,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
