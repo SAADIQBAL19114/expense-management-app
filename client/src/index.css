@@ -1,15 +1,51 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
-
-.content{
-  height: 80vh;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.register-page{
+
+.content {
+  /* min-height: 68.7vh; */
+  /* border: 10px solid blue; */
+}
+.register-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 90vh;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 20px;
+  box-shadow: 0 0 3px gray;
+}
+
+.anticon svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.active-icon {
+  color: black;
+}
+.inactive-icon {
+  color: rgb(197, 197, 197);
+}
+
+.switch-icons {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.677);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.footer {
+  margin-top: auto;
 }
