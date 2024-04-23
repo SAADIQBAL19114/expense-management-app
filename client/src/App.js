@@ -22,9 +22,9 @@ function App() {
   );
 }
 
-export function ProtectedRoutes(props) {
+export function ProtectedRoutes({children}) {
   if (localStorage.getItem("user")) {
-    return props.children;
+    return children;
   } else {
     return <Navigate to="/login" />;
   }
